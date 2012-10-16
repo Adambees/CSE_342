@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <cmath>
-#include <ctime>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -26,35 +26,32 @@ int findGCD(int i, int j) {
 	return count;
 }
 
+long long int toddiff(struct timeval *tod1, struct timeval *tod2)
+{
+    long long t1, t2;
+    t1 = tod1->tv_sec * 1000000 + tod1->tv_usec;
+    t2 = tod2->tv_sec * 1000000 + tod2->tv_usec;
+    return t1 - t2;
+}
+
 int main() {
-	clock_t start, end;
-	int numDP = 40; // initial array size
-	int nums[numDP];
-	nums[0] = 8;
-	// The following for loop writes a series of numbers to the array where nums[i] = nums[i-1]*3/2
-	// The loop cuts out after nums[i] goes past 3000 to avoid swamping the CPU with n^2 growth
-	for (int i=1; i < numDP; i++) {
-		nums[i] = nums[i-1]*3/2;
-		if (nums[i] > 7000) {
-			numDP = i+1; // set final length of the array for future use
-			break;
-		}
-	}
-	for (int dp = 0; dp < numDP; dp++) { // for each n in the array
+	struct timeval start, end;
+	int n;
+	cin >> n;
+	for (int i = 8; i <= n; i++) { // for each n in the array
 		int maxCount = 0;
-		start = clock();
-		for (int i = 8; i <= nums[dp]; i++) { //
-			for (int j = i; j <= nums[dp]; j++ ) {
-				int c = findGCD(i, j);
+		gettimeofday(&start,NULL);
+		for (int j = 8; j <= i; j++) { //
+			for (int k = j+1; k <= i; k++ ) {
+				int c = findGCD(j, k);
 				if (c > maxCount) {
 					maxCount = c;
 				}
 			}
 		}
-		end = clock();
-		double elapsed = (double)(end-start)/CLOCKS_PER_SEC;
-		cout << "Max was " << maxCount << ", number was: " << nums[dp] <<", elapsed time: " << elapsed << endl;
-		cerr << maxCount << " " << nums[dp] << " " << elapsed << endl;
+		gettimeofday(&end,NULL);
+		cout << "Max was " << maxCount << ", number was: " << i <<", elapsed time: " << (int)toddiff(&end,&start) << endl;
+		cerr << maxCount << " " << i << " " << toddiff(&end,&start) << endl;
 	}
 
 	return 0;
