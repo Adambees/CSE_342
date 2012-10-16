@@ -35,10 +35,10 @@ long long int toddiff(struct timeval *tod1, struct timeval *tod2)
 }
 
 int main() {
-	struct timeval start, end;
 	int n;
 	cin >> n;
 	for (int i = 8; i <= n; i++) { // for each n in the array
+		struct timeval start, end;
 		int maxCount = 0;
 		gettimeofday(&start,NULL);
 		for (int j = 8; j <= i; j++) { //
@@ -50,7 +50,7 @@ int main() {
 			}
 		}
 		gettimeofday(&end,NULL);
-		cout << "Max was " << maxCount << ", number was: " << i <<", elapsed time: " << (int)toddiff(&end,&start) << endl;
+		cout << "Max was " << maxCount << ", number was: " << i <<", elapsed time: " << toddiff(&end,&start) << endl;
 		cerr << maxCount << " " << i << " " << toddiff(&end,&start) << endl;
 	}
 
