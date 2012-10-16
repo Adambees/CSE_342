@@ -1,0 +1,24 @@
+type two integers for w6: w1 = -2 lb -13 oz
+w2 = 2 lb 13 oz
+w3 = 2 lb 5 oz
+w4 = 1 lb
+w5 = 0 oz
+w6 = 4 lb 5 oz
+-w4 = -1 lb
+w1 + w2 + w3 = 2 lb 5 oz
+w1 - w2 - w3 = -7 lb -15 oz
+w1 * 22 = -61 lb -14 oz
+Ratio ( w1 / w2 ) = -1
+w1 / 2.5 = -1 lb -2 oz
+w1 <= w2 is true
+w2 >= w3 is true
+w3 > w4 is true
+w4 < w5 is false
+w1 == w1 is true
+w1 != w1 is false
+(w5 += w1) += w2 is 0 oz
+(w5 = 0) is 0 oz
+(w5 -= w1) -= w2 is 0 oz
+(w1 *= 11) *= 2 is -61 lb -14 oz
+(w1 /= 2) / w3 is -13.3784
+DIVIDE BY ZERO w1 / w5 = -inf
