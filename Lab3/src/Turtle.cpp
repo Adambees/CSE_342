@@ -42,5 +42,5 @@ void Turtle::move( float d ) {
 // turn by angle a
 void Turtle::turn( float a ) {
 	angle += a;
-	out <<
+	out << endl;
 }
