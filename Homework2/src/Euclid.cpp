@@ -1,9 +1,14 @@
 /*
- * Euclid.cpp
- *
- *  Created on: Oct 12, 2012
- *      Author: Jay
- */
+  CSS 342 HW2
+  Jay Hennen
+  Weight.cpp
+  10/13/2012
+  This class is runs Euclid's Algorithm for all pairs of numbers between 8 and n. It tracks
+  and outputs the max modulus operations required to find the GCD between two pairs of numbers
+  8 and n. It outputs those numbers i and j and also their GCD. Lastly, it also records the time
+  it takes for the program to complete all iterations of Euclid's Algorithm for all pairs of numbers
+  between 8 and n.
+*/
 
 #include <iostream>
 #include <cmath>
@@ -26,32 +31,40 @@ int findGCD(int i, int j) {
 	return count;
 }
 
-long long int toddiff(struct timeval *tod1, struct timeval *tod2)
+// function to subtract one timeval from the other
+long long int elapsed(struct timeval *td1, struct timeval *td2)
 {
     long long t1, t2;
-    t1 = tod1->tv_sec * 1000000 + tod1->tv_usec;
-    t2 = tod2->tv_sec * 1000000 + tod2->tv_usec;
+    t1 = td1->tv_sec * 1000000 + td1->tv_usec;
+    t2 = td2->tv_sec * 1000000 + td2->tv_usec;
     return t1 - t2;
 }
 
 int main() {
-	struct timeval start, end;
-	int n;
-	cin >> n;
-	for (int i = 8; i <= n; i++) { // for each n in the array
+	int n = 0;
+	while (n <= 8) {
+		cout << "Please input an n > 8: ";
+		cin >> n;
+	}
+	for (int i = 8; i <= n; i++) {
+		struct timeval start, end;
 		int maxCount = 0;
-		gettimeofday(&start,NULL);
-		for (int j = 8; j <= i; j++) { //
+		int n1=0,n2=0;
+		gettimeofday(&start,NULL);				//start timing
+		for (int j = 8; j <= i; j++) {
 			for (int k = j+1; k <= i; k++ ) {
 				int c = findGCD(j, k);
 				if (c > maxCount) {
 					maxCount = c;
+					n1=j;
+					n2=k;
 				}
 			}
 		}
 		gettimeofday(&end,NULL);
-		cout << "Max was " << maxCount << ", number was: " << i <<", elapsed time: " << (int)toddiff(&end,&start) << endl;
-		cerr << maxCount << " " << i << " " << toddiff(&end,&start) << endl;
+		cout << "Max was " << maxCount << ", i was " << n1 << ", j was " << n2 <<
+				", n was: " << i <<", elapsed time: " << elapsed(&end,&start) << endl;
+		cerr << maxCount << " " << i << " " << elapsed(&end,&start) << endl;
 	}
 
 	return 0;
