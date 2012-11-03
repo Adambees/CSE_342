@@ -1,4 +1,11 @@
-// Sierpinski Class
+/*
+  CSS 342 HW3
+  Jay Hennen
+  Gosper.h
+  10/27/2012
+  This class defines a function which creates a Gosper fractal figure.
+  It can create left-handed or right-handed Gosper figures.
+ */
 #ifndef GOSPER_H
 #define GOSPER_H
 
