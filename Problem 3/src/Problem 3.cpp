@@ -1,12 +1,3 @@
-/*
- ============================================================================
- Name        : Problem.cpp
- Author      : Jay
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C++,
- ============================================================================
- */
 #include "Gosper.h"
 #include <iostream>
 using namespace std;
