@@ -3,7 +3,7 @@
 using namespace std;
 
 template <class Comparable>
-void swap( vector<Comparable> &b, int n1, int n2 ) {
+void merge( vector<Comparable> &b, int n1, int n2 , int len) {
 
 }
 
@@ -14,9 +14,13 @@ void mergesort( vector<Comparable> &a ) {
 	vector<Comparable> b( size );  // this is only one temporary array.
 
 	// implement a nonrecursive mergesort only using vectors a and b.
-	;
-	for(int i = 0, j = 1; i < size/2 && j < size/2; i+=2, j+=2) {
 
+
+
+	int len = 1; // length of sub-arrays
+	for(len < size)
+	for(int i = 0, j = size/2-len; i < size/2-len && j < size; i+=2*len, j+=2*len) {
+		merge( a, i,i+len, len);
 	}
 
 }
