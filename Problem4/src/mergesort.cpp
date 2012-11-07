@@ -1,23 +1,35 @@
+/*
+  CSS 342 HW3
+  Jay Hennen
+  mergesort.cpp
+  11/4/2012
+  This is an implementation of the bottom up merge sort algorithm, conducted
+  iteratively to increase speed.
+ */
+
 #include <vector>
 #include <math.h> // may need to use pow( )
 using namespace std;
 
+// Method to merge two subsections of vector a into vector b.
+// The length of subsections is right - left. 'end' denotes either the last
+// element in the array, or the start of the next pair of subsections
 template <class Comparable>
-void merge(vector<Comparable> &A, vector<Comparable> &B, int left, int right, int end) {
+void merge(vector<Comparable> &a, vector<Comparable> &b, int left, int right, int end) {
 	int li = left;
 	int ri = right;
 
-	/* while there are elements in the left or right lists
-	 * start at left, go to end*/
+/* j is the index of array b that is being written to*/
 	for (int j = left; j < end; j++)
 	{
-		/* if left list head exists and is <= existing right list head */
-		if (li < right && (ri >= end || A[li] <= A[ri])) {
-			B[j] = A[li]; // choose number from left sub-array
-			li = li + 1;  // shift
+		/*If left index is still within it's subsection, and right index
+		 * has passed the end OR left element is less than right element*/
+		if (li < right && (ri >= end || a[li] <= a[ri])) {
+			b[j] = a[li]; // choose number from left sub-array
+			li = li + 1;  // shift left index
 		} else {
-			B[j] = A[ri]; // choose number from right sub-array
-			ri = ri + 1;  // shift
+			b[j] = a[ri]; // choose number from right sub-array
+			ri = ri + 1;  // shift right index
 		}
 	}
 }
@@ -31,10 +43,16 @@ void mergesort( vector<Comparable> &a ) {
 	// implement a nonrecursive mergesort only using vectors a and b.
 
 	int len; // length of sub-arrays
-	for(len = 1; len < size; len = 2*len) {
-		for (int i = 0; i < size; i += 2*len) {
-			merge(a, b, i, min(i+len, size), min(i+2*len, size));
+	vector<Comparable> temp;
+	for(len = 1; len < size; len = 2*len) {		// l = index of left subsection
+		for (int l = 0; l < size; l += 2*len) {
+			int r = min(l+len, size);			// r = index of right subsection
+			int end = min(l+2*len, size);		// end = index of next sub or end of vector
+			merge(a, b, l, r, end);			// merge left and right subsections
 		}
+		temp = a;
 		a = b;
+		b = temp;
 	}
+
 }

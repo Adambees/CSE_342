@@ -1,3 +1,12 @@
+/*
+  CSS 342 HW3
+  Jay Hennen
+  mergeImproved.cpp
+  11/4/2012
+  This is an implementation of the bottom up merge sort algorithm, conducted
+  iteratively to increase speed.
+ */
+
 #include <vector>
 #include <math.h> // may need to use pow( )
 using namespace std;
@@ -45,4 +54,5 @@ void mergeImproved( vector<Comparable> &a ) {
 		a = b;
 		b = temp;
 	}
+
 }
