@@ -1,0 +1,30 @@
+data initialization
+start performance evaluation
+quicksort: 46
+mergesort: 210
+mergesort improved: 67
+data initialization
+start performance evaluation
+quicksort: 97
+mergesort: 542
+mergesort improved: 134
+data initialization
+start performance evaluation
+quicksort: 198
+mergesort: 1553
+mergesort improved: 281
+data initialization
+start performance evaluation
+quicksort: 593
+mergesort: 5221
+mergesort improved: 636
+data initialization
+start performance evaluation
+quicksort: 1093
+mergesort: 17184
+mergesort improved: 1311
+data initialization
+start performance evaluation
+quicksort: 2325
+mergesort: 63988
+mergesort improved: 2876
