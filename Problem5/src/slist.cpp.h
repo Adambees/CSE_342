@@ -81,27 +81,34 @@ void SList<Object>::insert( const Object &obj ) {
 		return;
 
 	//Insert new node at level-0
-	right->prev->next = new SListNode<Object>;
-	right->prev->next->item = obj;
-	right->prev->next->prev = right->prev;
-	right->prev = right->prev->next;
-	right->prev = right;
-	while(rand()%2 && level < LEVEL) { //50% chance of adding new node one level up
+	SListNode<Object> * newNode = new SListNode<Object>;
+	newNode->item = obj;
+
+	newNode->next = right;
+	newNode->prev = right->prev;
+	newNode->prev->next = newNode;
+	right->prev = newNode;
+	cout << "success ";
+	/*while(0 && level < LEVEL) { //50% chance of adding new node one level up
 		up = right;
-		while(up->up == NULL) {
+		cout << "success";
+		while(up->up) {
 			up = up->prev;
 		}
-		up = right->up;
-		up = up->next;
+		up = up->up;
+		if(up->next != NULL)
+			up = up->next;
+		cout << "success";
 		up->prev->next = new SListNode<Object>;
 		up->prev->next->item = obj;
 		up->prev->next->prev = up->prev;
 		up->prev = up->prev->next;
-		up->prev = up;
+		up->prev->next = up;
 		up->down = right; //connect vertically
 		up->down->up = up;
+		right = up;
 		level++;
-	}
+	}*/
 
 }
 
