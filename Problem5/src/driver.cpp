@@ -10,16 +10,11 @@ int main( ) {
   delete intList;
 
   SList<string> facultyList;
-  facultyList.show();
 
   facultyList.insert( "unknown" );
-  facultyList.show();
   facultyList.insert( "erdly" );
-  facultyList.show();
   facultyList.insert( "sung" );
-  facultyList.show();
   facultyList.insert( "olson" );
-  facultyList.show();
   facultyList.insert( "zander" );
   facultyList.insert( "berger" );
   facultyList.insert( "cioch" );

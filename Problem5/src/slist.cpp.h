@@ -69,7 +69,8 @@ void SList<Object>::clear( ) {
 	}                                          // let the right most point to it
 }
 
-template<class Object>  // Implement the rest by yourself /////////////////////////////////////////
+// Implemented by Jay Hennen, inserts a node and creates vertical nodes.
+template<class Object>
 void SList<Object>::insert( const Object &obj ) {
 	// right points to the level-0 item before which a new object is inserted.
 	SListNode<Object> *right = searchPointer( obj );
@@ -80,30 +81,32 @@ void SList<Object>::insert( const Object &obj ) {
 		// there is an identical object
 		return;
 
-	//Insert new node at level-0
+	// Insert new node at level-0
+	// 1. Create new object
 	SListNode<Object> * newNode = new SListNode<Object>;
 	newNode->item = obj;
-
+	// 2. Insert the object into level-0
 	newNode->next = right;
 	newNode->prev = right->prev;
 	newNode->prev->next = newNode;
 	right->prev = newNode;
+	level++;
 	while(rand()%2 && level < LEVEL) { //50% chance of adding new node one level up
-		up = right;
-		while(up->up == NULL) {
+		up = right->prev; // Set variable up to start travel
+		while(!up->up) { // while no path upwards, go left
 			up = up->prev;
 		}
 		up = up->up;
-		if(up->next != NULL)
-			up = up->next;
+		up = up->next; // go up and past the insert location.
+		// Create new node
 		newNode = new SListNode<Object>;
 		newNode->item = obj;
-
+		// Insert new node
 		newNode->next = up;
 		newNode->prev = up->prev;
 		newNode->prev->next = newNode;
-		up->prev = newNode;
-		up->prev->down = right->prev; //connect vertically
+		up->prev = newNode; //connect vertically
+		up->prev->down = right->prev;
 		up->prev->down->up = up->prev;
 		right = up;
 		level++;
@@ -151,8 +154,9 @@ SListNode<Object> *SList<Object>::searchPointer( const Object &obj ) {
 	return p; // return the pointer to an item >= a given object.
 }
 
+// Implemented by Jay Hennen, removes a node and all vertical nodes above it.
 template<class Object>
-void SList<Object>::remove( const Object &obj ) {
+void SList<Object>::remove( const Object &obj ) {// Implement the rest by yourself /////////////////////////////////////////
 	// p points to the level-0 item to delete
 	SListNode<Object> *p = searchPointer( obj );
 
@@ -161,7 +165,18 @@ void SList<Object>::remove( const Object &obj ) {
 	if ( p->prev == NULL || p->next == NULL || p->item != obj )
 		return;
 
-	// Implement the rest by yourself /////////////////////////////////////////
+	// The node exists, so remove it from the lowest level
+	do {
+		p->next->prev = p->prev;
+		p->prev->next = p->next;
+		if (p->up) { // if it has a node above it, move up then delete
+			p = p->up;
+			delete p->down;
+		} else { // else delete and you're done.
+			delete p;
+		}
+	} while(p && p->up);
+
 }
 
 template<class Object>
