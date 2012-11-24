@@ -32,12 +32,18 @@ enum TokenType {
   EQUAL,       // ==
   NOTEQUAL,    // !=
 
+  ASSIGN,      // =
+
   BIT_AND,     // & 
   BIT_EOR,     // ^ 
   BIT_IOR,     // | 
 
   LOG_AND,     // && 
-  LOG_OR,      // || 
+  LOG_OR,      // ||
+
+  VAR_A,       // variable a
+  VAR_B,       // variable b
+  VAR_C        // variable c
 };
 
 // the class definition is the same as the original

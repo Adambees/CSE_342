@@ -1,0 +1,37 @@
+#faculty members: 10
+contents:
+-inf	-inf	-inf	-inf	-inf	-inf	
+berger	berger	berger	
+cioch	
+erdly	erdly	erdly	erdly	erdly	
+fukuda	
+jackels	
+olson	olson	olson	
+stiber	
+sung	
+unknown	unknown	
+zander	zander	
++inf	+inf	+inf	+inf	+inf	+inf	
+
+deleting unknown
+#faculty members: 9
+contents:
+-inf	-inf	-inf	-inf	-inf	-inf	
+berger	berger	berger	
+cioch	
+erdly	erdly	erdly	erdly	erdly	
+fukuda	
+jackels	
+olson	olson	olson	
+stiber	
+sung	
+zander	zander	
++inf	+inf	+inf	+inf	+inf	+inf	
+
+finding stiber = 1
+
+create another list
+finding stiber = 1
+#faculty members: 9
+
+cost of find = 104

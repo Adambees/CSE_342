@@ -1,0 +1,6 @@
+dlist's find cost = 6491439
+mtflist's find cost = 66448
+translist's find cost = 6422436
+skip's find cost = 2078098
+
+If the access of elements was random, then the Skip List should be the fastest of the four. Because of it's probabilistic structure, it will allow searches in Log(n) time while all the other lists would be searching in at least Log(n) time.

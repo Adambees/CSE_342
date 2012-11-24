@@ -95,8 +95,14 @@ class Evaluator {
 
   // Internal routines
   NumericType getTop( );                    // Get top of postfix stack
+  void unaryOp(TokenType topOp);
   void binaryOp( TokenType topOp );         // Process an operator
   void processToken( const Token<NumericType> &lastToken );
+  // new members
+  vector<char> postFixVarStack;             // Postfix machine stack for var
+  NumericType var_a;                        // variable a
+  NumericType var_b;                        // variable b
+  NumericType var_c;						// variable c
 };
 
 #include "evaluator.cpp.h"
