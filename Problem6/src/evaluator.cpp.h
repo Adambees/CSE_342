@@ -67,14 +67,7 @@ processToken( const Token<NumericType> &lastToken ) {
 	/*case ASSIGN:
 		NumericType rhs = getTop();
 		postFixStack.pop_back();
-		if (rhs == VAR_A)
-			var_a = rhs;
-		else if (rhs == VAR_B)
-			var_b = rhs;
-		else if (rhs == VAR_C)
-			var_c = rhs;
-		else
-			postFixStack.push_back(rhs);
+
 		break;*/
 
 	default: // general operator case
@@ -129,6 +122,7 @@ void Evaluator<NumericType>::binaryOp( TokenType topOp ) {
 	NumericType rhs = getTop( );
 	NumericType lhs = getTop( );
 	postFixVarStack.pop_back();
+	char v = postFixVarStack.back();
 	postFixVarStack.pop_back();
 	// the original operators
 	if ( topOp == PLUS )
@@ -174,7 +168,21 @@ void Evaluator<NumericType>::binaryOp( TokenType topOp ) {
 		postFixStack.push_back( lhs && rhs );
 	else if ( topOp == LOG_OR )
 		postFixStack.push_back( lhs || rhs );
-	else if ( topOp == ASSIGN ){}
+	else if ( topOp == ASSIGN ){
+		switch (v) {
+		case 'a':
+			var_a = rhs;
+			break;
+		case 'b':
+			var_b = rhs;
+			break;
+		case 'c':
+			var_c = rhs;
+			break;
+		}
+		postFixStack.push_back(rhs);
+
+	}
 		opStack.pop_back( );
 		postFixVarStack.push_back(' ');
 }
