@@ -113,6 +113,7 @@ void Evaluator<NumericType>::unaryOp(TokenType topOp) {
 	else if ( topOp == NOT )
 		postFixStack.push_back( !lhs );
 	opStack.pop_back( );
+	postFixVarStack.push_back(' ');
 }
 
 // Process an operator by taking two items off the postfix stack, applying
@@ -127,6 +128,8 @@ void Evaluator<NumericType>::binaryOp( TokenType topOp ) {
 	}
 	NumericType rhs = getTop( );
 	NumericType lhs = getTop( );
+	postFixVarStack.pop_back();
+	postFixVarStack.pop_back();
 	// the original operators
 	if ( topOp == PLUS )
 		postFixStack.push_back( lhs + rhs );
@@ -173,6 +176,7 @@ void Evaluator<NumericType>::binaryOp( TokenType topOp ) {
 		postFixStack.push_back( lhs || rhs );
 	else if ( topOp == ASSIGN ){}
 		opStack.pop_back( );
+		postFixVarStack.push_back(' ');
 }
 
 // top and pop the postfix machine stack; return the result.
