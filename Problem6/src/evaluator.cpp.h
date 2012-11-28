@@ -1,3 +1,10 @@
+/*
+ * Edited by Jay Hennen
+ * CSE 342 HW 6
+ * 11/27/2012
+ * */
+
+
 // Public routine that performs the evaluation. Examines the postfix machine
 // to see if a single result is left and if so, return it; otherwise prints
 // error.
@@ -64,11 +71,6 @@ processToken( const Token<NumericType> &lastToken ) {
 		else
 			cerr << "Missing open parenthesis" << endl;
 		break;
-	/*case ASSIGN:
-		NumericType rhs = getTop();
-		postFixStack.pop_back();
-
-		break;*/
 
 	default: // general operator case
 		while ( PREC_TABLE[ lastType ].inputSymbol <=
@@ -96,7 +98,7 @@ void Evaluator<NumericType>::unaryOp(TokenType topOp) {
 		return;
 	}
 	NumericType lhs = getTop( );
-	postFixVarStack.pop_back();
+	postFixVarStack.pop_back();				// pop varstack
 	if(topOp == BIT_COMP)
 		postFixStack.push_back( ~lhs );
 	else if ( topOp == UN_PLUS )
@@ -106,7 +108,7 @@ void Evaluator<NumericType>::unaryOp(TokenType topOp) {
 	else if ( topOp == NOT )
 		postFixStack.push_back( !lhs );
 	opStack.pop_back( );
-	postFixVarStack.push_back(' ');
+	postFixVarStack.push_back(' ');			// readd to var stack
 }
 
 // Process an operator by taking two items off the postfix stack, applying
@@ -139,7 +141,7 @@ void Evaluator<NumericType>::binaryOp( TokenType topOp ) {
 			postFixStack.push_back( lhs );
 		}
 
-	// C++ operators
+	// C++ operators added by JAH
 	else if ( topOp == MODULUS )
 		postFixStack.push_back( lhs % rhs );
 	else if ( topOp == SHIFT_L )

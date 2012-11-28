@@ -1,3 +1,9 @@
+/*
+ * Edited by Jay Hennen
+ * CSE 342 HW 6
+ * 11/27/2012
+ * */
+
 template <class NumericType>
 bool Tokenizer<NumericType>::getChar( char &ch ) {
 	char tmp;
@@ -37,6 +43,7 @@ Token<NumericType> Tokenizer<NumericType>::getToken( ) {
 
 		case '%': return (prevToken = MODULUS);
 
+		// Below are added
 		case '+':
 			if(prevToken == OPAREN)
 				return (prevToken = UN_PLUS);
