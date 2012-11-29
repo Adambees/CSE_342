@@ -33,6 +33,7 @@ class LongInt {
   bool operator!=( const LongInt & rhs ) const;
 
  private:
+  void init ();
   Deque<char> digits;
   bool negative;
   void remove0s( );
