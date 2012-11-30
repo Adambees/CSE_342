@@ -37,6 +37,7 @@ class LongInt {
   Deque<char> digits;
   bool negative;
   void remove0s( );
+  void addDigits( const string str);
 };
 
 #endif
