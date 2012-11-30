@@ -90,21 +90,20 @@ LongInt LongInt::operator-( const LongInt &rhs ) const {
 				int rval;
 				(!l->isEmpty()) ? lval = (int)l->removeBack() - 48 : lval = 0;
 				(!r->isEmpty()) ? rval = (int)r->removeBack() - 48 : rval = 0;
-
-				sum = lval - rval - borrow;
-				if (sum < 0) {
-					sum = sum+10;
-					borrow = 1;
-					result.digits.addFront((char)((sum)%() + 48));
+				if (*this <= rhs || *this > rhs) {
+					sum = lval - rval - borrow;
+					if (sum < 0) {
+						borrow = 1;
+						result.digits.addFront((char)((10+sum) + 48));
+					} else {
+						result.digits.addFront((char)((sum) + 48));
+					}
 				} else {
-					result.digits.addFront((char)((sum)%10 + 48));
+
 				}
-
-
 			}
-			if (borrow) {
+			if (negative)
 				result.negative = 1;
-			}
 
 	} else {
 		if (negative && !rhs.negative)
