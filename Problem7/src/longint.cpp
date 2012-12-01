@@ -76,6 +76,13 @@ LongInt LongInt::operator+( const LongInt &rhs ) const {
 	}
 	return result;
 }
+
+LongInt LongInt::buildComp( const LongInt num, int length) {
+	LongInt comp;
+	Deque<char> * r = new Deque<char>
+	return comp;
+}
+
 LongInt LongInt::operator-( const LongInt &rhs ) const {
 	LongInt result;
 	if(negative == rhs.negative) {
@@ -90,21 +97,8 @@ LongInt LongInt::operator-( const LongInt &rhs ) const {
 				int rval;
 				(!l->isEmpty()) ? lval = (int)l->removeBack() - 48 : lval = 0;
 				(!r->isEmpty()) ? rval = (int)r->removeBack() - 48 : rval = 0;
-				if (*this <= rhs || *this > rhs) {
-					sum = lval - rval - borrow;
-					if (sum < 0) {
-						borrow = 1;
-						result.digits.addFront((char)((10+sum) + 48));
-					} else {
-						result.digits.addFront((char)((sum) + 48));
-					}
-				} else {
-
-				}
+				sum = lval + rval + borrow;
 			}
-			if (negative)
-				result.negative = 1;
-
 	} else {
 		if (negative && !rhs.negative)
 			result = operator+(rhs);

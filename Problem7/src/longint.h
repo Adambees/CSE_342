@@ -38,6 +38,7 @@ class LongInt {
   bool negative;
   void remove0s( );
   void addDigits( const string str);
+  LongInt buildComp( const LongInt num);
 };
 
 #endif
