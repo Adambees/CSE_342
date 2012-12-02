@@ -19,19 +19,19 @@ int main( ) {
 	cout << "d = " << d << endl;
 	cout << "e = " << e << endl;
 
-//	LongInt f = e;
-//	cout << "f = " << f << endl;
-//
+	LongInt f = e;
+	cout << "f = " << f << endl;
+
 	cout << a << " + " << b << " =  " << ( a + b ) << endl;
 	cout << a << " - " << b << " =  " << ( a - b ) << endl;
-//	cout << b << " - " << a << " =  " << ( b - a ) << endl;
-//	cout << b << " + " << a << " =  " << ( b + a ) << endl;
-//	cout << a << " == " << c << " =  " << ( a == c ) << endl;
-//	cout << a << " != " << c << " =  " << ( a != c ) << endl;
-//	cout << a << " > " << d << " =  " << ( a > d ) << endl;
-//	cout << a << " >= " << d << " =  " << ( a >= d ) << endl;
-//	cout << a << " < " << d << " =  " << ( a < d ) << endl;
-//	cout << a << " <= " << d << " =  " << ( a <= d ) << endl;
-//	cout << "f = f + 1 = " << ( f = f + *( new LongInt( "-1" ) ) ) << endl;
-//	cout << "e = " << e << endl;
+	cout << b << " - " << a << " =  " << ( b - a ) << endl;
+	cout << b << " + " << a << " =  " << ( b + a ) << endl;
+	cout << a << " == " << c << " =  " << ( a == c ) << endl;
+	cout << a << " != " << c << " =  " << ( a != c ) << endl;
+	cout << a << " > " << d << " =  " << ( a > d ) << endl;
+	cout << a << " >= " << d << " =  " << ( a >= d ) << endl;
+	cout << a << " < " << d << " =  " << ( a < d ) << endl;
+	cout << a << " <= " << d << " =  " << ( a <= d ) << endl;
+	cout << "f = f + 1 = " << ( f = f + *( new LongInt( "-1" ) ) ) << endl;
+	cout << "e = " << e << endl;
 }

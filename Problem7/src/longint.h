@@ -20,10 +20,10 @@ class LongInt {
   // Arithmetic binary operators
   LongInt operator+( const LongInt &rhs ) const;
   LongInt operator-( const LongInt &rhs ) const;
-//
-//  // assignment operators
-//  const LongInt &operator=( const LongInt &rhs );
-//
+
+  // assignment operators
+  const LongInt &operator=( const LongInt &rhs );
+
   // Logical binary operators
   bool operator< ( const LongInt & rhs ) const;
   bool operator<=( const LongInt & rhs ) const;
@@ -36,9 +36,9 @@ class LongInt {
   void init ();
   Deque<char> digits;
   bool negative;
+  void convertSign( );
   void remove0s( );
   void addDigits( const string str);
-  LongInt buildComp( const LongInt num);
 };
 
 #endif
